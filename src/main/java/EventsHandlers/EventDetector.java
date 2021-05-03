@@ -12,9 +12,11 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Objects;
 
 public class EventDetector {
-    private final String resourceDir = "C:\\";
+    private final String resourceDir = "C:\\Users\\mmas6\\IntellijProjects\\IntellijPlugin\\src\\main\\resources\\sounds";
     private final String soundBuildStarting = "magic.wav";
     private final String soundBuildTerminated = "oww.wav";
     private final String soundSample = "sample.wav";
@@ -25,7 +27,6 @@ public class EventDetector {
         connection.subscribe(ExecutionManager.EXECUTION_TOPIC, new ExecutionListener() {
             @Override
             public void processStarting(@NotNull String executorId, @NotNull ExecutionEnvironment env) {
-
                 try {
                     System.out.println(executorId);
                     SoundPlayer.playClip(loader.getFile(soundBuildStarting));
