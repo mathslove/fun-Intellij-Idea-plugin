@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.mathslove.IntellijPlugin</id>
+    <name>Magical Coding</name>
+    <vendor>Mikhail Maslov</vendor>
+
+    <description>Play sounds on events. La-lala-la-lalalala-lalal-lalala</description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <project-components>
+        <component>
+            <implementation-class>EventsHandlers.EventDetector</implementation-class>
+        </component>
+    </project-components>
+
+    <application-components>
+        <component>
+            <implementation-class>TypingAnimation.MagicMode</implementation-class>
+        </component>
+    </application-components>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable groupId="appearance" groupWeight="20" id="magic.mode" displayName="Power Mode" instance="TypingAnimation.MagicModeConfigurable" />
+    </extensions>
+</idea-plugin>
