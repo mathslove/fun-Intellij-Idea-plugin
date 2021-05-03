@@ -10,12 +10,10 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Objects;
 
 public class EventDetector {
+    //ToDo: remake hardcode to resource
     private final String resourceDir = "C:\\Users\\mmas6\\IntellijProjects\\IntellijPlugin\\src\\main\\resources\\sounds";
     private final String soundBuildStarting = "magic.wav";
     private final String soundBuildTerminated = "oww.wav";
