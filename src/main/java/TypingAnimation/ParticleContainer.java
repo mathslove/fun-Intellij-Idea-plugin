@@ -13,6 +13,8 @@
 
 package TypingAnimation;
 
+import SoundHandler.FileResourceLoader;
+import SoundHandler.SoundPlayer;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.ui.JBColor;
@@ -92,6 +94,9 @@ public class ParticleContainer extends JComponent implements ComponentListener {
         }
 //        shakeEditor(parent, 5, 5, shakeDir);
 //        shakeDir = !shakeDir;
+        try {
+            SoundPlayer.playClip(FileResourceLoader.getFile("type1.wav"));
+        } catch (Exception ignored) {}
         this.repaint();
     }
 

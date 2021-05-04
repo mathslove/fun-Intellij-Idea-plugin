@@ -1,4 +1,4 @@
-package EventsHandlers;
+package SoundHandler;
 
 import javax.sound.sampled.*;
 import javax.sound.sampled.LineEvent.Type;

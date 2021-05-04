@@ -1,5 +1,7 @@
 package EventsHandlers;
 
+import SoundHandler.FileResourceLoader;
+import SoundHandler.SoundPlayer;
 import com.intellij.execution.ExecutionListener;
 import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.runners.ExecutionEnvironment;
@@ -18,16 +20,16 @@ public class EventDetector {
     private final String soundBuildStarting = "magic.wav";
     private final String soundBuildTerminated = "oww.wav";
     private final String soundSample = "sample.wav";
-    private final FileResourceLoader loader = new FileResourceLoader(resourceDir);
 
     public EventDetector(Project project) throws Exception {
+        FileResourceLoader.setRootDir(resourceDir);
         MessageBusConnection connection = project.getMessageBus().connect();
         connection.subscribe(ExecutionManager.EXECUTION_TOPIC, new ExecutionListener() {
             @Override
             public void processStarting(@NotNull String executorId, @NotNull ExecutionEnvironment env) {
                 try {
                     System.out.println(executorId);
-                    SoundPlayer.playClip(loader.getFile(soundBuildStarting));
+                    SoundPlayer.playClip(FileResourceLoader.getFile(soundBuildStarting));
                 } catch (IOException | UnsupportedAudioFileException | LineUnavailableException | InterruptedException e) {
                     e.printStackTrace();
                     Messages.showMessageDialog("Error while trying to play clip", "Error", Messages.getErrorIcon());
@@ -37,7 +39,7 @@ public class EventDetector {
             @Override
             public void processNotStarted(@NotNull String executorId, @NotNull ExecutionEnvironment env) {
                 try {
-                    SoundPlayer.playClip(loader.getFile(soundBuildTerminated));
+                    SoundPlayer.playClip(FileResourceLoader.getFile(soundBuildTerminated));
                 } catch (IOException | UnsupportedAudioFileException | LineUnavailableException | InterruptedException e) {
                     e.printStackTrace();
                     Messages.showMessageDialog("Error while trying to play clip", "Error", Messages.getErrorIcon());
