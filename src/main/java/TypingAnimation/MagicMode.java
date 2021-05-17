@@ -27,7 +27,7 @@ public class MagicMode implements ApplicationComponent, PersistentStateComponent
     @com.intellij.util.xmlb.annotations.Transient
     private ParticleContainerManager particleContainerManager;
 
-    private boolean enabled = true;
+    private boolean isEnabled = true;
 
     public static MagicMode getInstance() {
         return ApplicationManager.getApplication().getComponent(MagicMode.class);
@@ -87,10 +87,10 @@ public class MagicMode implements ApplicationComponent, PersistentStateComponent
     }
 
     public boolean isEnabled() {
-        return enabled;
+        return isEnabled;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setEnablement(boolean enabled) {
+        this.isEnabled = enabled;
     }
 }

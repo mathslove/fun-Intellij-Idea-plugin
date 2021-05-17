@@ -15,7 +15,7 @@
 
     <project-components>
         <component>
-            <implementation-class>EventsHandlers.EventDetector</implementation-class>
+            <implementation-class>EventsHandler.EventsSound</implementation-class>
         </component>
     </project-components>
 
@@ -26,6 +26,8 @@
     </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationConfigurable groupId="appearance" groupWeight="20" id="magic.mode" displayName="Power Mode" instance="TypingAnimation.MagicModeConfigurable" />
+        <applicationConfigurable groupId="appearance" groupWeight="20" id="magic.mode" displayName="Magic Mode" instance="MagicModeConfigurable"  />
+        <consoleInputFilterProvider implementation="EventsHandler.ConsoleErrorInputFilterProvider" />
+
     </extensions>
 </idea-plugin>
