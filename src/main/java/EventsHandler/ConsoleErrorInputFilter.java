@@ -8,10 +8,6 @@ import com.intellij.openapi.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,11 +23,6 @@ public class ConsoleErrorInputFilter implements InputFilter {
     @Override
     public @Nullable List<Pair<String, ConsoleViewContentType>> applyFilter(@NotNull String text, @NotNull ConsoleViewContentType contentType) {
         if (contentType.equals(ConsoleViewContentType.ERROR_OUTPUT)) {
-            try {
-                new FileOutputStream(new File("C:\\Users\\mmas6\\OneDrive\\Desktop\\log.txt"), true).write(text.getBytes(StandardCharsets.UTF_8));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             this.errorStack += text;
         }
         if (contentType.equals(ConsoleViewContentType.SYSTEM_OUTPUT) && text.trim().startsWith("Process finished with exit code")) {
